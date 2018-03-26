@@ -105,4 +105,15 @@ weexpack plugin add weex-growingio
 | callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
 ## JS中调用方式:
+```
+var gio = weex.requireModule('GrowingIO');
+var trackItem = {'eventId':'123', 'eventLevelVariable':{'city':'DaLian'},' number':65};
+
+gio.track(trackItem, function (ret) {
+          var result = ret.result;
+          if (result == 'success') {
+            console.log('track success');
+          }
+        });
+```
 
