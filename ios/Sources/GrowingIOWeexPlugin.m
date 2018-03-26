@@ -157,9 +157,9 @@ NS_INLINE NSString *GROWGetTimestamp() {
         return;
     }
     
-    if (page.length == 0) {
+    if (page.length == 0 || page.length > 1000) {
         if (callback) {
-            callback([self errorCallbackDictWithInfo:@"Argument error, The Argument page can not be empty"], NO);
+            callback([self errorCallbackDictWithInfo:@"Argument error, The Argument page length can not > 1000 or = 0"], NO);
         }
         return;
     }
@@ -243,9 +243,9 @@ NS_INLINE NSString *GROWGetTimestamp() {
         userId = ((NSNumber *)userId).stringValue;
     }
     
-    if (userId.length == 0) {
+    if (userId.length == 0 || userId.length > 1000) {
         if (callback) {
-            callback([self errorCallbackDictWithInfo:@"Argument error, The Argument userId can not be empty"], NO);
+            callback([self errorCallbackDictWithInfo:@"Argument error, The Argument userId length can not > 1000 or = 0"], NO);
         }
         return;
     }
@@ -272,7 +272,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
 
 - (NSMutableDictionary *)successCallbackDictWithInfo:(NSString *)info
 {
-    NSMutableDictionary *callbackDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@ succes", info], @"info", @"success", @"result", nil];
+    NSMutableDictionary *callbackDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%@ success", info], @"info", @"success", @"result", nil];
     return callbackDict;
 }
 
