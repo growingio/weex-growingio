@@ -15,11 +15,12 @@
   "android": {
     "//": "安装类型为maven",
     "type": "maven",
-    "groupId": "org.weex.plugin",
+    "groupId": "com.growingio.android.weex",
     "name": "WeexGrowingIO",
     "version": "0.0.1"
   },
   "keywords": [
+    "growingio",
     "weex",
     "hybrid",
     "webcomponent",

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 14
@@ -30,4 +30,6 @@ dependencies {
     compile 'com.taobao.android:weex_sdk:0.16.0'
     provided 'org.weex.plugin:processor:1.0.2'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.growingio.android:vds-android-agent:2.3.0@aar'
 }
