@@ -8,7 +8,7 @@
 
 #import "GrowingIOWeexPlugin.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
-#import "Growing.h"
+//#import "Growing.h"
 
 @implementation GrowingIOWeexPlugin
 
@@ -69,7 +69,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     
     if (!eventLevelVariable && !number) {
         [self dispatchInMainThread:^{
-            [Growing track:eventId];
+//            [Growing track:eventId];
         }];
         
     } else if (eventLevelVariable && number) {
@@ -86,7 +86,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
             return;
         }
         [self dispatchInMainThread:^{
-            [Growing track:eventId withNumber:number andVariable:eventLevelVariable];
+//            [Growing track:eventId withNumber:number andVariable:eventLevelVariable];
         }];
         
     } else if (eventLevelVariable) {
@@ -97,7 +97,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
             return;
         }
         [self dispatchInMainThread:^{
-            [Growing track:eventId withVariable:eventLevelVariable];
+//            [Growing track:eventId withVariable:eventLevelVariable];
         }];
     } else if (number) {
         if (![number isKindOfClass:[NSNumber class]]) {
@@ -107,7 +107,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
             return;
         }
         [self dispatchInMainThread:^{
-            [Growing track:eventId withNumber:number];
+//            [Growing track:eventId withNumber:number];
         }];
     }
     
@@ -133,7 +133,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
-        [Growing trackPageWithPageName:page pageTime:GROWGetTimestamp()];
+//        [Growing trackPageWithPageName:page pageTime:GROWGetTimestamp()];
     }];
     
     if (callback) {
@@ -172,7 +172,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
-        [Growing setPageVariable:pageLevelVariables toPage:page];
+//        [Growing setPageVariable:pageLevelVariables toPage:page];
     }];
     
     if (callback) {
@@ -197,7 +197,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
-        [Growing setEvar:conversionVariables];
+//        [Growing setEvar:conversionVariables];
     }];
     
     if (callback) {
@@ -222,7 +222,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
-        [Growing setPeopleVariable:peopleVariables];
+//        [Growing setPeopleVariable:peopleVariables];
     }];
     
     if (callback) {
@@ -251,7 +251,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
-        [Growing setPluginUserId:userId];
+//        [Growing setPluginUserId:userId];
     }];
     
     if (callback) {
@@ -262,7 +262,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
 - (void)clearUserId:(WXModuleKeepAliveCallback)callback
 {
     [self dispatchInMainThread:^{
-        [Growing clearPluginUserId];
+//        [Growing clearPluginUserId];
     }];
     
     if (callback) {
