@@ -42,4 +42,5 @@ THE SOFTWARE.
   s.dependency "WeexPluginLoader"
   s.dependency "WeexSDK"
   s.dependency "GrowingIO"
+  
 end
