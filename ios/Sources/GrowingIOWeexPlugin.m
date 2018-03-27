@@ -8,7 +8,7 @@
 
 #import "GrowingIOWeexPlugin.h"
 #import <WeexPluginLoader/WeexPluginLoader.h>
-#import "Growing.h"
+//#import "Growing.h"
 
 @implementation GrowingIOWeexPlugin
 
