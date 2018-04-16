@@ -43,17 +43,49 @@ pod update
 ##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-20/sdk-20-api-wen-dang/ios-sdk-21-an-zhuang.html)
 
 ## 安卓集成插件WeexGrowingIO
+### 导入SDK
 - 命令行集成
 ```
 weexpack plugin add weex-growingio
 ```
 - 手动集成
- 在相应工程的build.gradle文件的dependencies中添加
- ```
- compile '${groupId}:WeexGrowingIO:{$version}'
- ```
-  注意：您需要自行指定插件的groupId和version并将构建产物发布到相应的依赖管理仓库内去（例如maven）, 您也可以对插件的name进行自定义，默认将使用插件工程的名称作为name
-  
+ - 在相应工程的build.gradle文件的dependencies中添加
+```
+compile 'com.growingio.android:weex:{$version}'
+```
+注意： 其中version为版本号. 最新版本为 0.0.1
+
+### 初始化SDK
+首先需要配置build.gradle, 在android-> defaultConfig添加以下属性
+``` 
+android {
+    defaultConfig {
+        resValue("string", "growingio_project_id", "您的项目ID")
+        resValue("string", "growingio_url_scheme", "您的URL Scheme")
+    }
+}
+```
+
+请将以下GrowingIO.startWithConfiguration加入到您的Application的onCreate方法中
+``` java
+public class WXApplication extends Application {
+
+  @Override
+  public void onCreate() {
+    ...
+	// 如果是手动集成的SDK， 需要手动注册
+	// WXSDKEngine.registerModule("GrowingIO", WeexGrowingioModule.class)	
+	
+	GrowingIO.startWithConfiguration(this, new Configuration()
+            .useID()
+            .setRnMode(true)              // weex必须设置这个属性
+            .setChannel("XXX应用商店")
+            .setDebugMode(true));  // 打开调试日志
+	
+  }
+}
+```
+具体函数含义请参见: [官网Android集成文档](https://docs.growingio.com/sdk-20/sdk-20-api-wen-dang/android-sdk-21-an-zhuang.html)
 ## 方法说明
 1.track(event, callback)
 

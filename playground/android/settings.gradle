@@ -1,4 +1,3 @@
 include ':app'
-
-include ":library"
-project (':library').projectDir = new File("../../android/library")
+include ":weex"
+project (':weex').projectDir = new File("../../android/library")

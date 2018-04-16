@@ -1,0 +1,55 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = project.ext.groupId                             // Maven Group ID for the artifact
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                groupId     project.ext.groupId
+                artifactId  project.ext.artifactName
+                name        project.ext.artifactName
+                description project.ext.libraryDescription
+                version     project.ext.currentVersion
+                url         project.ext.siteUrl
+
+                licenses {
+                    license {
+                        name project.ext.licenseName
+                        url  project.ext.licenseUrl
+                    }
+                }
+            }
+        }
+    }
+}
+
+version =  project.ext.currentVersion
+
+bintray {
+    user = project.ext.bintrayUser
+    key  = project.ext.key
+    group = project.ext.groupId
+    configurations = ['archives']
+    pkg {
+        repo = project.ext.bintrayRepo
+        name = project.ext.artifactName
+        desc = project.ext.libraryDescription
+        websiteUrl = project.ext.siteUrl
+        vcsUrl = project.ext.gitUrl
+        licenses = project.ext.allLicenses
+        publish = true
+
+        version {
+            desc = project.ext.libraryDescription
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = project.ext.passphrase
+                //Optional. The passphrase for GPG signing'
+            }
+        }
+    }
+}

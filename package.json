@@ -15,8 +15,8 @@
   "android": {
     "//": "安装类型为maven",
     "type": "maven",
-    "groupId": "com.growingio.android.weex",
-    "name": "WeexGrowingIO",
+    "groupId": "com.growingio.android",
+    "name": "weex",
     "version": "0.0.1"
   },
   "keywords": [

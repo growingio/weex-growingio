@@ -1,0 +1,53 @@
+def outDir = 'build/outputs'
+def eclipseDir = "$outDir/eclipse"
+
+def aarFile = "$outDir/aar/${project.name}-release.aar"
+def artifactWithVersion = "${artifactName}-${currentVersion}"
+
+def jarFile = "$outDir/${artifactWithVersion}.jar"
+def releaseDir = "release/" + currentVersion.replace('.', '_')
+def mappingFile = "$outDir/mapping/release/mapping.txt"
+def releaseJar = "${releaseDir}/${artifactWithVersion}.jar"
+def releaseAar = "${releaseDir}/${artifactWithVersion}.aar"
+
+
+task extractJarFile(dependsOn: 'assembleRelease') {
+    doLast {
+        file(eclipseDir).deleteDir()
+        copy {
+            from zipTree(aarFile)
+            into eclipseDir
+        }
+        file(eclipseDir + '/classes.jar').renameTo(file(jarFile))
+    }
+    file(eclipseDir).deleteDir()
+}
+
+task prepareReleaseSDK(dependsOn: ['extractJarFile', 'assembleRelease']) {
+    doLast {
+
+        file(releaseDir).deleteDir()
+        file(releaseDir).mkdirs()
+
+        copy {
+            from mappingFile
+            into releaseDir
+        }
+        file(jarFile).renameTo(file(releaseJar))
+        file(aarFile).renameTo(file(releaseAar))
+    }
+
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.ext.groupId
+            artifactId project.ext.artifactName
+            version project.ext.currentVersion
+            artifact file(releaseJar)
+            artifact file(releaseAar)
+        }
+    }
+}
+publishToMavenLocal.dependsOn(prepareReleaseSDK)
