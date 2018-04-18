@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
+apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.growingio.android'
 version = '0.0.1'
@@ -14,7 +13,6 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
-
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
 
     }
@@ -24,24 +22,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-ext {
-    currentVersion = version
-    bintrayUser = "lishaojie"
-    key = "0727165e3b3edfb6038c8cb1caaa599479bcbb5c"
-    passphrase = "growingio123"
-
-    artifactName = "weex"
-    groupId = group
-
-    libraryDescription = "The Weex Bridge Module for GrowingIO"
-    siteUrl = ""
-    gitUrl = ""
-    licenseName = ""
-    licenseUrl = ""
-    allLicenses = ""
-    bintrayRepo = 'maven'
+    lintOptions{
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -50,8 +34,25 @@ dependencies {
     compileOnly 'com.taobao.android:weex_sdk:0.16.0'
     compileOnly 'org.weex.plugin:processor:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.growingio.android:vds-android-agent:2.3.0@aar'
+    compile 'com.growingio.android:vds-android-agent:2.3.1@aar'
 }
 
-apply from: 'publishing.gradle'
-apply from: 'bintray.gradle'
+Properties properties = new Properties();
+FileInputStream fileInputStream = new FileInputStream(new File("local.properties"));
+properties.load(fileInputStream)
+fileInputStream.close()
+def mUserOrg = properties.getProperty("bintray.userOrg")
+def mBintrayUser = properties.getProperty("bintray.user")
+def mBintrayKey = properties.getProperty("bintray.key")
+
+publish {
+    groupId = group
+    artifactId = 'vds-weex'
+    publishVersion = version
+    userOrg = mUserOrg
+    bintrayUser = mBintrayUser
+    bintrayKey = mBintrayKey
+    desc = 'Android weex module of GrowingIO'
+    website = 'https://github.com/novoda/bintray-release'
+    dryRun = false
+}

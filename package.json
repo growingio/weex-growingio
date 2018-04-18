@@ -16,7 +16,7 @@
     "//": "安装类型为maven",
     "type": "maven",
     "groupId": "com.growingio.android",
-    "name": "weex",
+    "name": "vds-weex",
     "version": "0.0.1"
   },
   "keywords": [
