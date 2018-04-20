@@ -40,7 +40,7 @@ pod 'WeexGrowingIO'
 ```
 pod update
 ```
-##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-20/sdk-20-api-wen-dang/ios-sdk-21-an-zhuang.html)
+##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-ji-cheng/sdk-1.x-wen-dang/sdk-1.x-jie-ru-zhi-nan/sdk-jie-ru-zhi-nan-ios.html)
 
 ## 安卓集成插件WeexGrowingIO
 ### 导入SDK
