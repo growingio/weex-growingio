@@ -32,6 +32,8 @@ NS_INLINE NSString *GROWGetTimestamp() {
     return GROWGetTimestampFromTimeInterval([[NSDate date] timeIntervalSince1970]);
 }
 
+static NSString *pageName;
+
 - (void)track:(NSDictionary *)event
 {
     if (![event isKindOfClass:[NSDictionary class]]) {
@@ -109,6 +111,7 @@ NS_INLINE NSString *GROWGetTimestamp() {
     }
     
     [self dispatchInMainThread:^{
+        pageName = page;
         [Growing trackPageWithPageName:page pageTime:GROWGetTimestamp()];
     }];
 }
@@ -132,6 +135,11 @@ NS_INLINE NSString *GROWGetTimestamp() {
     
     if (pageLevelVariables.count == 0) {
         NSLog(@"Method(setPageVariable) Argument error, The Argument pageLevelVariables can not be empty");
+        return;
+    }
+    
+    if (![page isEqualToString:pageName]) {
+        NSLog(@"Method(setPageVariable) error, Need to call page first");
         return;
     }
     
