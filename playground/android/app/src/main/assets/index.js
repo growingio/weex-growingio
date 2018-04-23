@@ -60,6 +60,12 @@
 
 	__weex_bootstrap__('@weex-component/677c57764d82d558f236d5241843a2a2',undefined,undefined)
 
+	        var gio = weex.requireModule('GrowingIO');
+            console.log('gio is ' + gio);
+            gio.page("111Main", "222Main");
+            console.log('called');
+
+
 /***/ },
 /* 1 */,
 /* 2 */,

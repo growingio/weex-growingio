@@ -11,6 +11,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        resValue("string", "growingio_project_id", "9926fc6c1189e2fb")
+        resValue("string", "growingio_url_scheme", "growing.2169765f5c48612a")
+
         ndk{
             abiFilters "x86"
             abiFilters "armeabi"

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.growingio.android'
-version = '0.0.1'
+version = '0.0.3'
 
 android {
     compileSdkVersion 25
@@ -44,6 +44,10 @@ fileInputStream.close()
 def mUserOrg = properties.getProperty("bintray.userOrg")
 def mBintrayUser = properties.getProperty("bintray.user")
 def mBintrayKey = properties.getProperty("bintray.key")
+
+println("mUserOrg: " + mUserOrg);
+println("mBintrayUser: " + mBintrayUser)
+println("mBintrayKey: " + mBintrayKey)
 
 publish {
     groupId = group

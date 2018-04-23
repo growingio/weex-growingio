@@ -220,6 +220,9 @@ import com.alibaba.weex.extend.module.RenderModule;
 import com.alibaba.weex.extend.module.SyncTestModule;
 import com.alibaba.weex.extend.module.WXEventModule;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.growingio.android.sdk.collection.Configuration;
+import com.growingio.android.sdk.collection.GrowingIO;
+import com.growingio.android.weex.WeexGrowingioModule;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKEngine;
@@ -268,6 +271,7 @@ public class WXApplication extends Application {
 
       WXSDKEngine.registerModule("myModule", MyModule.class);
       WXSDKEngine.registerModule("geolocation", GeolocationModule.class);
+      WXSDKEngine.registerModule("GrowingIO", WeexGrowingioModule.class);
 
 
 
@@ -286,6 +290,13 @@ public class WXApplication extends Application {
     } catch (WXException e) {
       e.printStackTrace();
     }
+
+    GrowingIO.startWithConfiguration(this, new Configuration()
+            .useID()
+            .setRnMode(true)
+            .trackAllFragments()
+            .setChannel("XXX应用商店")
+    );
 
 
     registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
