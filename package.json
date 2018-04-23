@@ -17,7 +17,7 @@
     "type": "maven",
     "groupId": "com.growingio.android",
     "name": "vds-weex",
-    "version": "0.0.1"
+    "version": "0.1"
   },
   "keywords": [
     "growingio",

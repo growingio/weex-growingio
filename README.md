@@ -51,7 +51,7 @@ weexpack plugin add weex-growingio
 - 手动集成
 在相应工程的build.gradle文件的dependencies中添加
 ```
-compile 'com.growingio.android:vds-weex:0.0.1'
+compile 'com.growingio.android:vds-weex:0.1'
 ```
 
 ### 初始化SDK

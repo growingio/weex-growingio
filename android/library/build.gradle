@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.growingio.android'
-version = '0.0.3'
+version = '0.1'
 
 android {
     compileSdkVersion 25
@@ -57,6 +57,6 @@ publish {
     bintrayUser = mBintrayUser
     bintrayKey = mBintrayKey
     desc = 'Android weex module of GrowingIO'
-    website = 'https://github.com/novoda/bintray-release'
+    website = 'https://github.com/growingio/weex-growingio'
     dryRun = false
 }
