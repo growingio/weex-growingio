@@ -40,7 +40,7 @@ pod 'WeexGrowingIO'
 ```
 pod update
 ```
-##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-20/sdk-20-api-wen-dang/ios-sdk-21-an-zhuang.html)
+##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-ji-cheng/sdk-1.x-wen-dang/sdk-1.x-jie-ru-zhi-nan/sdk-jie-ru-zhi-nan-ios.html)
 
 ## 安卓集成插件WeexGrowingIO
 ### 导入SDK
@@ -86,65 +86,51 @@ public class WXApplication extends Application {
 ```
 具体函数含义请参见: [官网Android集成文档](https://docs.growingio.com/sdk-20/sdk-20-api-wen-dang/android-sdk-21-an-zhuang.html)
 ## 方法说明
-1.track(event, callback)
+1.track(event)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | event | object | 是 | key:eventId(string类型,必要key) value:(string类型)<br> key:eventLevelVariable(string类型,非必要key) value:(object类型)<br> key:number(string类型, 非必要key) value(number类型) |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-2.page(page, callback)
+2.page(page)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | page | string | 是 |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-3.setPageVariable(page, pageLevelVariables, callback)
+3.setPageVariable(page, pageLevelVariables)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | page | string | 是 |
 | pageLevelVariables | object | 是 |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-4.setEvar(conversionVariables, callback)
+4.setEvar(conversionVariables)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | conversionVariables | object | 是 |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-5.setPeopleVariable(peopleVariables, callback)
+5.setPeopleVariable(peopleVariables)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | peopleVariables | object | 是 |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-6.setUserId(userId, callback)
+6.setUserId(userId)
 
 | 参数名 | 类型 | 是否必填 | 描述 |
 |-----|-----|-----|----|
 | userId | string | 是 |
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
-7.clearUserId(callback)
+7.clearUserId()
 
-| 参数名 | 类型 | 是否必填 | 描述 |
-|-----|-----|-----|----|
-| callback | 函数 | 否 | callback {function (ret)}：执行完读取操作后的回调函数。<br>ret  为 callback 函数的参数，有两个属性:<br>result:结果2种 success, error 都为string类型<br> info:结果string类型 |
 
 ## JS中调用方式:
 ```
 var gio = weex.requireModule('GrowingIO');
 var trackItem = {'eventId':'123', 'eventLevelVariable':{'city':'DaLian'},' number':65};
 
-gio.track(trackItem, function (ret) {
-          var result = ret.result;
-          if (result == 'success') {
-            console.log('track success');
-          }
-        });
+gio.track(trackItem);
 ```
 
