@@ -35,7 +35,7 @@ THE SOFTWARE.
   s.platform     = :ios
   s.ios.deployment_target = "7.0"
 
-  s.source       = { :git => 'https://github.com/growingio/weex-growingio.git', :branch => 'master'}
+  s.source       = { :git => 'https://github.com/growingio/weex-growingio.git', :branch => 'master', :tag => 'v0.1.0'}
   s.source_files  = "ios/Sources/*.{h,m,mm}"
   
   s.requires_arc = true
