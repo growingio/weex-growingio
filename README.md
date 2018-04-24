@@ -88,43 +88,75 @@ public class WXApplication extends Application {
 ## 方法说明
 1.track(event)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| event | object | 是 | key:eventId(string类型,必要key) value:(string类型)<br> key:eventLevelVariable(string类型,非必要key) value:(object类型)<br> key:number(string类型, 非必要key) value(number类型) |
+| event | Object | 是 | event 为 JsonObject，它的 key 必须为以下名称：<br> key:eventId(string类型,必要key,限制合法值为大小写字母、数字和下划线，并且不能以数字开头) value:(string类型)<br> key:eventLevelVariable(string类型,非必要key) value:(object类型)<br> key:number(string类型, 非必要key) value(number类型) <br> |  
+
+示例：  
+1. gio.track({'eventId':'trackTest'});
+2. gio.track({'eventId':'Test','number':65});
+3. gio.track({'eventId':'Test','number':65,'eventLevelVariable':{'city':'dalian'}});   
+
 
 2.page(page)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| page | string | 是 |
+| page | string | 是 | 长度限制1000以内 |  
+
+示例： 
+gio.page("main-page");  
+
+
 
 3.setPageVariable(page, pageLevelVariables)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| page | string | 是 |
-| pageLevelVariables | object | 是 |
+| page | string | 是 | 长度限制50以内，注意，在调用这个接口之前必须调用相同 pageName 的 page 接口 |
+| pageLevelVariables | Object | 是 | key 长度限制50以内 | 
+
+示例：    
+
+gio.page('growingio');  
+gio.setPageVariable('growingio',{'growingio':'天气晴朗'});  
+
+
 
 4.setEvar(conversionVariables)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| conversionVariables | object | 是 |
+| conversionVariables | Object | 是 | key 长度限制50以内 |
+
+示例：
+gio.setEvar({'name':'TestGrowingIO_123'});  
+
 
 5.setPeopleVariable(peopleVariables)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| peopleVariables | object | 是 |
+| peopleVariables | Object | 是 | key 长度限制50以内 |
+
+示例：
+gio.setPeopleVariable({'name':'Test','number':65});  
+
 
 6.setUserId(userId)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| userId | string | 是 |
+| userId | string | 是 | 长度限制1000 |
 
-7.clearUserId()
+示例：
+gio.setUserId('growingio');  
 
+
+7.clearUserId()  
+
+示例：
+gio.clearUserId();
 
 ## JS中调用方式:
 ```
