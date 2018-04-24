@@ -1,6 +1,6 @@
 {
   "name": "weex-growingio",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "./js/build/main.js",
   "description": "weex-growingio extend for weex",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
     "//": "安装类型为pod",
     "type": "pod",
     "name": "WeexGrowingIO",
-    "version": "0.0.1"
+    "version": "0.1.0"
   },
   "android": {
     "//": "安装类型为maven",
