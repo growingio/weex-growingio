@@ -96,32 +96,7 @@ public class WXApplication extends Application {
 3. gio.track({'eventId':'Test','number':65,'eventLevelVariable':{'city':'dalian'}});   
 
 
-2.page(page)
-
-| 参数名 | 类型 | 是否必填 | 参数描述 |
-|-----|-----|-----|----|
-| page | string | 是 | 长度限制1000以内 |  
-
-示例： 
-gio.page("main-page");  
-
-
-
-3.setPageVariable(page, pageLevelVariables)
-
-| 参数名 | 类型 | 是否必填 | 参数描述 |
-|-----|-----|-----|----|
-| page | string | 是 | 长度限制50以内，注意，在调用这个接口之前必须调用相同 pageName 的 page 接口 |
-| pageLevelVariables | Object | 是 | key 长度限制50以内 | 
-
-示例：    
-
-gio.page('growingio');  
-gio.setPageVariable('growingio',{'growingio':'天气晴朗'});  
-
-
-
-4.setEvar(conversionVariables)
+2.setEvar(conversionVariables)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -131,7 +106,7 @@ gio.setPageVariable('growingio',{'growingio':'天气晴朗'});
 gio.setEvar({'name':'TestGrowingIO_123'});  
 
 
-5.setPeopleVariable(peopleVariables)
+3.setPeopleVariable(peopleVariables)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -141,7 +116,7 @@ gio.setEvar({'name':'TestGrowingIO_123'});
 gio.setPeopleVariable({'name':'Test','number':65});  
 
 
-6.setUserId(userId)
+4.setUserId(userId)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -151,7 +126,7 @@ gio.setPeopleVariable({'name':'Test','number':65});
 gio.setUserId('growingio');  
 
 
-7.clearUserId()  
+5.clearUserId()  
 
 示例：
 gio.clearUserId();
