@@ -147,14 +147,14 @@ static NSString *pageName;
     }
     
     [self dispatchInMainThread:^{
-        [Growing setPluginUserId:userId];
+        [Growing setUserId:userId];
     }];
 }
 
 - (void)clearUserId
 {
     [self dispatchInMainThread:^{
-        [Growing clearPluginUserId];
+        [Growing clearUserId];
     }];
 }
 
