@@ -17,8 +17,6 @@
 WX_PlUGIN_EXPORT_MODULE(GrowingIO, GrowingIOWeexPlugin)
 
 WX_EXPORT_METHOD(@selector(track:))
-WX_EXPORT_METHOD(@selector(page:))
-WX_EXPORT_METHOD(@selector(setPageVariable:pageLevelVariables:))
 WX_EXPORT_METHOD(@selector(setEvar:))
 WX_EXPORT_METHOD(@selector(setPeopleVariable:))
 WX_EXPORT_METHOD(@selector(setUserId:))
@@ -96,56 +94,6 @@ static NSString *pageName;
             [Growing track:eventId withNumber:number];
         }];
     }
-}
-
-- (void)page:(NSString *)page
-{
-    if (![page isKindOfClass:[NSString class]]) {
-        NSLog(@"Method(page) Argument error, The Argument page must be string type");
-        return;
-    }
-    
-    if (page.length == 0) {
-        NSLog(@"Method(page) Argument error, The Argument page can not be empty");
-        return;
-    }
-    
-    [self dispatchInMainThread:^{
-        pageName = page;
-        [Growing trackPageWithPageName:page pageTime:GROWGetTimestamp()];
-    }];
-}
-
-- (void)setPageVariable:(NSString *)page pageLevelVariables:(NSDictionary *)pageLevelVariables
-{
-    if (![page isKindOfClass:[NSString class]]) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument page must be string type");
-        return;
-    }
-    
-    if (![pageLevelVariables isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument pageLevelVariables must be objct type");
-        return;
-    }
-    
-    if (page.length == 0 || page.length > 1000) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument page length can not > 1000 or = 0");
-        return;
-    }
-    
-    if (pageLevelVariables.count == 0) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument pageLevelVariables can not be empty");
-        return;
-    }
-    
-    if (![page isEqualToString:pageName]) {
-        NSLog(@"Method(setPageVariable) error, Need to call page first");
-        return;
-    }
-    
-    [self dispatchInMainThread:^{
-        [Growing setPageVariable:pageLevelVariables toPage:page];
-    }];
 }
 
 - (void)setEvar:(NSDictionary *)conversionVariables
