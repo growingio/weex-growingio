@@ -40,6 +40,7 @@ pod 'WeexGrowingIO'
 ```
 pod update
 ```
+- **(optional)** GrowingIO推荐您添加**AdSupport.framework**依赖库,用于来源管理激活匹配,有利于您更好的分析的数据,添加项目依赖库的位置在项目设置target -> 选项卡General -> Linked Frameworks and Libraries
 ##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-ji-cheng/sdk-1.x-wen-dang/sdk-1.x-jie-ru-zhi-nan/sdk-jie-ru-zhi-nan-ios.html)
 
 ## 安卓集成插件WeexGrowingIO
