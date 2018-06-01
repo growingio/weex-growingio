@@ -41,14 +41,6 @@ THE SOFTWARE.
   s.requires_arc = true
   s.dependency "WeexPluginLoader"
   s.dependency "WeexSDK"
+  s.dependency "GrowingCoreKit"
 
-  s.default_subspec = 'with-IDFA'
-  s.subspec 'with-IDFA' do |idfa|
-    idfa.dependency "GrowingCoreKit"
-  end
-
-  s.subspec 'without-IDFA' do |t|
-    t.dependency "GrowingCoreKit/without-IDFA"
-  end
-  
 end
