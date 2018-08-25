@@ -40,6 +40,7 @@ pod 'WeexGrowingIO'
 ```
 pod update
 ```
+- **(optional)** GrowingIO推荐您添加**AdSupport.framework**依赖库,用于来源管理激活匹配,有利于您更好的分析的数据,添加项目依赖库的位置在项目设置target -> 选项卡General -> Linked Frameworks and Libraries
 ##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-ji-cheng/sdk-1.x-wen-dang/sdk-1.x-jie-ru-zhi-nan/sdk-jie-ru-zhi-nan-ios.html)
 
 ## 安卓集成插件WeexGrowingIO
@@ -86,43 +87,50 @@ public class WXApplication extends Application {
 ## 方法说明
 1.track(event)
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| event | object | 是 | key:eventId(string类型,必要key) value:(string类型)<br> key:eventLevelVariable(string类型,非必要key) value:(object类型)<br> key:number(string类型, 非必要key) value(number类型) |
+| event | Object | 是 | event 为 JsonObject，它的 key 必须为以下名称：<br> key:eventId(string类型,必要key,限制合法值为大小写字母、数字和下划线，并且不能以数字开头) value:(string类型)<br> key:eventLevelVariable(string类型,非必要key) value:(object类型)<br> key:number(string类型, 非必要key) value(number类型) <br> |  
 
-2.page(page)
+示例：  
+1. gio.track({'eventId':'trackTest'});
+2. gio.track({'eventId':'Test','number':65});
+3. gio.track({'eventId':'Test','number':65,'eventLevelVariable':{'city':'dalian'}});   
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+
+2.setEvar(conversionVariables)
+
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| page | string | 是 |
+| conversionVariables | Object | 是 | key 长度限制50以内 |
 
-3.setPageVariable(page, pageLevelVariables)
+示例：
+gio.setEvar({'name':'TestGrowingIO_123'});  
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+
+3.setPeopleVariable(peopleVariables)
+
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| page | string | 是 |
-| pageLevelVariables | object | 是 |
+| peopleVariables | Object | 是 | key 长度限制50以内 |
 
-4.setEvar(conversionVariables)
+示例：
+gio.setPeopleVariable({'name':'Test','number':65});  
 
-| 参数名 | 类型 | 是否必填 | 描述 |
+
+4.setUserId(userId)
+
+| 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
-| conversionVariables | object | 是 |
+| userId | string | 是 | 长度限制1000 |
 
-5.setPeopleVariable(peopleVariables)
+示例：
+gio.setUserId('growingio');  
 
-| 参数名 | 类型 | 是否必填 | 描述 |
-|-----|-----|-----|----|
-| peopleVariables | object | 是 |
 
-6.setUserId(userId)
+5.clearUserId()  
 
-| 参数名 | 类型 | 是否必填 | 描述 |
-|-----|-----|-----|----|
-| userId | string | 是 |
-
-7.clearUserId()
-
+示例：
+gio.clearUserId();
 
 ## JS中调用方式:
 ```

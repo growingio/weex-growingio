@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "WeexGrowingIO"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "GrowingIO Weex Plugin"
 
   s.description  = <<-DESC
@@ -41,6 +41,6 @@ THE SOFTWARE.
   s.requires_arc = true
   s.dependency "WeexPluginLoader"
   s.dependency "WeexSDK"
-  s.dependency "GrowingIO"
-  
+  s.dependency "GrowingCoreKit"
+
 end
