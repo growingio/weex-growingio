@@ -51,7 +51,7 @@ weexpack plugin add weex-growingio
 - 手动集成
 在相应工程的build.gradle文件的dependencies中添加
 ```
-compile 'com.growingio.android:vds-weex:0.1'
+compile 'com.growingio.android:vds-weex:0.2'
 ```
 
 ### 初始化SDK
@@ -76,10 +76,8 @@ public class WXApplication extends Application {
 	// WXSDKEngine.registerModule("GrowingIO", WeexGrowingioModule.class)	
 	
 	GrowingIO.startWithConfiguration(this, new Configuration()
-            .useID()
-            .setRnMode(true)              // weex必须设置这个属性
             .setChannel("XXX应用商店")
-            .setDebugMode(true));  // 打开调试日志
+            .setDebugMode(true));  // 打开调试日志, 线上环境请关闭
 	
   }
 }
