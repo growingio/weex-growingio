@@ -69,7 +69,7 @@ public class WeexGrowingioModule extends WXModule {
         }
     }
 
-    @JSMethod
+    //@JSMethod
     public void page(@Nullable String pageName) {
         JSCallback callback = null;
         if (TextUtils.isEmpty(pageName)) {
@@ -80,7 +80,7 @@ public class WeexGrowingioModule extends WXModule {
         GrowingIO.getInstance().trackPage(pageName);
     }
 
-    @JSMethod
+    //@JSMethod
     public void setPageVariable(@Nullable String pageName, @Nullable Map<String, Object> pageLevelVariables) {
         JSCallback callback = null;
         if (TextUtils.isEmpty(pageName) || (!TextUtils.isEmpty(trackPage) && !pageName.equals(trackPage))) {
