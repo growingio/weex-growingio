@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 group = 'com.growingio.android'
-version = '0.1'
+version = '0.3'
 
 android {
     compileSdkVersion 25
@@ -34,7 +34,7 @@ dependencies {
     compileOnly 'com.taobao.android:weex_sdk:0.16.0'
     compileOnly 'org.weex.plugin:processor:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.growingio.android:vds-android-agent:2.3.1@aar'
+    compile 'com.growingio.android:vds-android-agent:track-2.6.0@aar'
 }
 
 Properties properties = new Properties();
