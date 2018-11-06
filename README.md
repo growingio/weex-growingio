@@ -127,10 +127,18 @@ gio.setPeopleVariable({'name':'Test','number':65});
 gio.setUserId('growingio');  
 
 
-5.clearUserId()  
+5.clearUserId()
 
 示例：
-gio.clearUserId();
+gio.clearUserId();  
+
+6.setVisitor(visitorVariables)
+| 参数             | 类型   | 是否必填 | 参数描述          |
+| ------           | -----  | -----    | ------            |
+| visitorVariables | Object | 是       | key长度限制50以内 |
+
+示例: 
+gio.setVisitor({'eventId':'trackTest');  
 
 ## JS中调用方式:
 ```

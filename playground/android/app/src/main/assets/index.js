@@ -62,7 +62,7 @@
 
 	        var gio = weex.requireModule('GrowingIO');
             console.log('gio is ' + gio);
-            gio.page("111Main", "222Main");
+            gio.setVisitor({'testkey': 'testValue'});
             console.log('called');
 
 

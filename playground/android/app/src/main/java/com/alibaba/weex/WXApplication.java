@@ -292,9 +292,7 @@ public class WXApplication extends Application {
     }
 
     GrowingIO.startWithConfiguration(this, new Configuration()
-            .useID()
             .setRnMode(true)
-            .trackAllFragments()
             .setChannel("XXX应用商店")
     );
 
