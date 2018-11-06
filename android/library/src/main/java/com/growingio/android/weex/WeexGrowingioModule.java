@@ -94,6 +94,14 @@ public class WeexGrowingioModule extends WXModule {
     }
 
     @JSMethod
+    public void setVisitor(@Nullable Map<String, Object> visitor){
+        org.json.JSONObject jsonObject =praseJsonObject(visitor, null);
+        if (jsonObject == null)
+            return;
+        GrowingIO.getInstance().setVisitor(jsonObject);
+    }
+
+    @JSMethod
     public void setEvar(@Nullable Map<String, Object> conversionVariables) {
         JSCallback callback = null;
         org.json.JSONObject jsonObject = praseJsonObject(conversionVariables, callback);
