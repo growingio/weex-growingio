@@ -35,12 +35,16 @@ THE SOFTWARE.
   s.platform     = :ios
   s.ios.deployment_target = "7.0"
 
+<<<<<<< HEAD
   s.source       = { :git => 'https://github.com/growingio/weex-growingio.git', :branch => 'master', :tag => 'v0.1.1'}
+=======
+  s.source       = { :git => 'https://github.com/growingio/weex-growingio.git', :branch => 'develop'}
+>>>>>>> ad4c60e948565257118ece22f758010df1a8c925
   s.source_files  = "ios/Sources/*.{h,m,mm}"
   
   s.requires_arc = true
   s.dependency "WeexPluginLoader"
   s.dependency "WeexSDK"
-  s.dependency "GrowingIO"
-  
+  s.dependency "GrowingCoreKit"
+
 end

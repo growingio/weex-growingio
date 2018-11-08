@@ -40,6 +40,7 @@ pod 'WeexGrowingIO'
 ```
 pod update
 ```
+- **(optional)** GrowingIO推荐您添加**AdSupport.framework**依赖库,用于来源管理激活匹配,有利于您更好的分析的数据,添加项目依赖库的位置在项目设置target -> 选项卡General -> Linked Frameworks and Libraries
 ##### [添加官网配置(步骤5,6,8)](https://docs.growingio.com/sdk-ji-cheng/sdk-1.x-wen-dang/sdk-1.x-jie-ru-zhi-nan/sdk-jie-ru-zhi-nan-ios.html)
 
 ## 安卓集成插件WeexGrowingIO
@@ -51,7 +52,7 @@ weexpack plugin add weex-growingio
 - 手动集成
 在相应工程的build.gradle文件的dependencies中添加
 ```
-compile 'com.growingio.android:vds-weex:0.1'
+compile 'com.growingio.android:vds-weex:0.3'
 ```
 
 ### 初始化SDK
@@ -76,10 +77,8 @@ public class WXApplication extends Application {
 	// WXSDKEngine.registerModule("GrowingIO", WeexGrowingioModule.class)	
 	
 	GrowingIO.startWithConfiguration(this, new Configuration()
-            .useID()
-            .setRnMode(true)              // weex必须设置这个属性
             .setChannel("XXX应用商店")
-            .setDebugMode(true));  // 打开调试日志
+            .setDebugMode(true));  // 打开调试日志, 线上环境请关闭
 	
   }
 }
@@ -98,32 +97,7 @@ public class WXApplication extends Application {
 3. gio.track({'eventId':'Test','number':65,'eventLevelVariable':{'city':'dalian'}});   
 
 
-2.page(page)
-
-| 参数名 | 类型 | 是否必填 | 参数描述 |
-|-----|-----|-----|----|
-| page | string | 是 | 长度限制1000以内 |  
-
-示例： 
-gio.page("main-page");  
-
-
-
-3.setPageVariable(page, pageLevelVariables)
-
-| 参数名 | 类型 | 是否必填 | 参数描述 |
-|-----|-----|-----|----|
-| page | string | 是 | 长度限制50以内，注意，在调用这个接口之前必须调用相同 pageName 的 page 接口 |
-| pageLevelVariables | Object | 是 | key 长度限制50以内 | 
-
-示例：    
-
-gio.page('growingio');  
-gio.setPageVariable('growingio',{'growingio':'天气晴朗'});  
-
-
-
-4.setEvar(conversionVariables)
+2.setEvar(conversionVariables)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -133,7 +107,7 @@ gio.setPageVariable('growingio',{'growingio':'天气晴朗'});
 gio.setEvar({'name':'TestGrowingIO_123'});  
 
 
-5.setPeopleVariable(peopleVariables)
+3.setPeopleVariable(peopleVariables)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -143,7 +117,7 @@ gio.setEvar({'name':'TestGrowingIO_123'});
 gio.setPeopleVariable({'name':'Test','number':65});  
 
 
-6.setUserId(userId)
+4.setUserId(userId)
 
 | 参数名 | 类型 | 是否必填 | 参数描述 |
 |-----|-----|-----|----|
@@ -153,10 +127,18 @@ gio.setPeopleVariable({'name':'Test','number':65});
 gio.setUserId('growingio');  
 
 
-7.clearUserId()  
+5.clearUserId()
 
 示例：
-gio.clearUserId();
+gio.clearUserId();  
+
+6.setVisitor(visitorVariables)
+| 参数             | 类型   | 是否必填 | 参数描述          |
+| ------           | -----  | -----    | ------            |
+| visitorVariables | Object | 是       | key长度限制50以内 |
+
+示例: 
+gio.setVisitor({'eventId':'trackTest');  
 
 ## JS中调用方式:
 ```

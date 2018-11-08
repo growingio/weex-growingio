@@ -1,6 +1,6 @@
 {
   "name": "weex-growingio",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "main": "./js/build/main.js",
   "description": "weex-growingio extend for weex",
   "license": "Apache-2.0",

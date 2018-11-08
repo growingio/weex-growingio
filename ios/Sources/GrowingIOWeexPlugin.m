@@ -97,6 +97,7 @@ static NSString *pageName;
     }
 }
 
+<<<<<<< HEAD
 
 
 - (void)setEvar:(NSDictionary *)conversionVariables
@@ -117,6 +118,9 @@ static NSString *pageName;
 }
 
 - (void)setVisitor:(NSDictionary *)visitorVariables
+=======
+- (void)setEvar:(NSDictionary *)conversionVariables
+>>>>>>> ad4c60e948565257118ece22f758010df1a8c925
 {
     if (![visitorVariables isKindOfClass:[NSDictionary class]]) {
         NSLog(@"Method(setVisitor) Argument error, The Argument visitorVariables must be object type");
@@ -168,14 +172,14 @@ static NSString *pageName;
     }
     
     [self dispatchInMainThread:^{
-        [Growing setPluginUserId:userId];
+        [Growing setUserId:userId];
     }];
 }
 
 - (void)clearUserId
 {
     [self dispatchInMainThread:^{
-        [Growing clearPluginUserId];
+        [Growing clearUserId];
     }];
 }
 
