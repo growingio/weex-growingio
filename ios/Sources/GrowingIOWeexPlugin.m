@@ -97,9 +97,6 @@ static NSString *pageName;
     }
 }
 
-<<<<<<< HEAD
-
-
 - (void)setEvar:(NSDictionary *)conversionVariables
 {
     if (![conversionVariables isKindOfClass:[NSDictionary class]]) {
@@ -118,9 +115,6 @@ static NSString *pageName;
 }
 
 - (void)setVisitor:(NSDictionary *)visitorVariables
-=======
-- (void)setEvar:(NSDictionary *)conversionVariables
->>>>>>> ad4c60e948565257118ece22f758010df1a8c925
 {
     if (![visitorVariables isKindOfClass:[NSDictionary class]]) {
         NSLog(@"Method(setVisitor) Argument error, The Argument visitorVariables must be object type");
