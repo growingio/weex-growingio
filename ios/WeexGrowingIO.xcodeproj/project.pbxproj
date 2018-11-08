@@ -17,6 +17,7 @@
 		0F1C92092FF9562A4B475501 /* Pods-WeexGrowingIO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexGrowingIO.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeexGrowingIO/Pods-WeexGrowingIO.debug.xcconfig"; sourceTree = "<group>"; };
 		188E343220663F5B00FF778B /* GrowingIOWeexPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GrowingIOWeexPlugin.h; sourceTree = "<group>"; };
 		188E343320663F5B00FF778B /* GrowingIOWeexPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GrowingIOWeexPlugin.m; sourceTree = "<group>"; };
+		42907A5F2193E41C001A0F28 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		6C5C0FF53CE5ECFBF447EF29 /* libPods-WeexGrowingIO.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeexGrowingIO.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87F9AEB97654FF7EEA032F16 /* Pods-WeexGrowingIO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeexGrowingIO.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeexGrowingIO/Pods-WeexGrowingIO.release.xcconfig"; sourceTree = "<group>"; };
 		C45843E41E84EF5B00D88C0B /* WeexGrowingIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexGrowingIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +39,7 @@
 		248CB2E7B700A3049EE0727E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				42907A5F2193E41C001A0F28 /* Podfile */,
 				6C5C0FF53CE5ECFBF447EF29 /* libPods-WeexGrowingIO.a */,
 			);
 			name = Frameworks;
@@ -188,7 +190,8 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/native-bundle-main.js",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/wx_load_error@3x.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

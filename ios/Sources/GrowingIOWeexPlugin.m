@@ -17,12 +17,11 @@
 WX_PlUGIN_EXPORT_MODULE(GrowingIO, GrowingIOWeexPlugin)
 
 WX_EXPORT_METHOD(@selector(track:))
-WX_EXPORT_METHOD(@selector(page:))
-WX_EXPORT_METHOD(@selector(setPageVariable:pageLevelVariables:))
 WX_EXPORT_METHOD(@selector(setEvar:))
 WX_EXPORT_METHOD(@selector(setPeopleVariable:))
 WX_EXPORT_METHOD(@selector(setUserId:))
 WX_EXPORT_METHOD(@selector(clearUserId))
+WX_EXPORT_METHOD(@selector(setVisitor:))
 
 NS_INLINE NSString *GROWGetTimestampFromTimeInterval(NSTimeInterval timeInterval) {
     return [NSNumber numberWithUnsignedLongLong:timeInterval * 1000.0].stringValue;
@@ -98,55 +97,7 @@ static NSString *pageName;
     }
 }
 
-- (void)page:(NSString *)page
-{
-    if (![page isKindOfClass:[NSString class]]) {
-        NSLog(@"Method(page) Argument error, The Argument page must be string type");
-        return;
-    }
-    
-    if (page.length == 0) {
-        NSLog(@"Method(page) Argument error, The Argument page can not be empty");
-        return;
-    }
-    
-    [self dispatchInMainThread:^{
-        pageName = page;
-        [Growing trackPageWithPageName:page pageTime:GROWGetTimestamp()];
-    }];
-}
 
-- (void)setPageVariable:(NSString *)page pageLevelVariables:(NSDictionary *)pageLevelVariables
-{
-    if (![page isKindOfClass:[NSString class]]) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument page must be string type");
-        return;
-    }
-    
-    if (![pageLevelVariables isKindOfClass:[NSDictionary class]]) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument pageLevelVariables must be objct type");
-        return;
-    }
-    
-    if (page.length == 0 || page.length > 1000) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument page length can not > 1000 or = 0");
-        return;
-    }
-    
-    if (pageLevelVariables.count == 0) {
-        NSLog(@"Method(setPageVariable) Argument error, The Argument pageLevelVariables can not be empty");
-        return;
-    }
-    
-    if (![page isEqualToString:pageName]) {
-        NSLog(@"Method(setPageVariable) error, Need to call page first");
-        return;
-    }
-    
-    [self dispatchInMainThread:^{
-        [Growing setPageVariable:pageLevelVariables toPage:page];
-    }];
-}
 
 - (void)setEvar:(NSDictionary *)conversionVariables
 {
@@ -164,6 +115,24 @@ static NSString *pageName;
         [Growing setEvar:conversionVariables];
     }];
 }
+
+- (void)setVisitor:(NSDictionary *)visitorVariables
+{
+    if (![visitorVariables isKindOfClass:[NSDictionary class]]) {
+        NSLog(@"Method(setVisitor) Argument error, The Argument visitorVariables must be object type");
+        return;
+    }
+    
+    if (visitorVariables.count == 0) {
+        NSLog(@"Method(setVisitor) Argument error, The Argument visitorVariables can not be empty");
+        return;
+    }
+    
+    [self dispatchInMainThread:^{
+        [Growing setVisitor:visitorVariables];
+    }];
+}
+
 
 - (void)setPeopleVariable:(NSDictionary *)peopleVariables
 {
