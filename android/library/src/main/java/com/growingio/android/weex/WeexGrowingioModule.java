@@ -41,6 +41,7 @@ public class WeexGrowingioModule extends WXModule {
         }
         if (!params.containsKey("number") && !params.containsKey("eventLevelVariable")) {
             GrowingIO.getInstance().track((String) params.get("eventId"));
+            return ;
         }
 
         Object eventLevelVariable = params.get("eventLevelVariable");
@@ -51,12 +52,14 @@ public class WeexGrowingioModule extends WXModule {
             }
             if (eventLevelVariable == null) {
                 GrowingIO.getInstance().track((String) params.get("eventId"), (Number) params.get("number"));
+                return ;
             } else {
                 if (!(eventLevelVariable instanceof JSONObject)) {
                     failCallback(callback, "[track]The value of the key \"eventLevelVariable\" must be JSONObject type!");
                     return ;
                 }
                 GrowingIO.getInstance().track((String) params.get("eventId"), (Number) params.get("number"), toOrgJSONObject((JSONObject) eventLevelVariable));
+                return ;
             }
         }
 
